@@ -6,7 +6,7 @@ import cv2
 #upper_hsv = np.array([179, 200, 255])
 
 # duck body
-lower_hsv = np.array([20, 40, 0])
+lower_hsv = np.array([10, 40, 0])
 upper_hsv = np.array([30, 255, 255])
 
 def preprocess(image_rgb: np.ndarray) -> np.ndarray:

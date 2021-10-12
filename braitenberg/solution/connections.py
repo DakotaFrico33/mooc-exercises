@@ -2,7 +2,7 @@ from typing import Tuple
 
 import numpy as np
 
-k_x = 0.7
+k_x = 0.65
 k_y = 0.5
 
 def get_motor_left_matrix(shape: Tuple[int, int]) -> np.ndarray:
