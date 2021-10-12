@@ -26,8 +26,8 @@ from preprocessing import preprocess
 
 @dataclass
 class BraitenbergAgentConfig:
-    gain: float = 0.1
-    const: float = 0.1
+    gain: float = 0.2
+    const: float = 0.2
 
 
 class BraitenbergAgent:
@@ -96,8 +96,8 @@ class BraitenbergAgent:
 
         gain = self.config.gain
         const = self.config.const
-        pwm_left = const + ls * gain
-        pwm_right = const + rs * gain
+        pwm_left = const - rs * gain
+        pwm_right = const - ls * gain
 
         return pwm_left, pwm_right
 
