@@ -10,6 +10,7 @@ def get_motor_left_matrix(shape: Tuple[int, int]) -> np.ndarray:
     (X,Y) = shape
     X_new = int(X*k_x)
     Y_new = int(Y*k_y)
+    res[0:X_new,0:Y_new]=-0.25
     res[X_new:X,0:Y_new]=1
     return res
 
@@ -19,5 +20,6 @@ def get_motor_right_matrix(shape: Tuple[int, int]) -> np.ndarray:
     (X,Y) = shape
     X_new = int(X*k_x)
     Y_new = int(Y*k_y)
+    res[0:X_new,-Y_new::]=-0.25
     res[X_new:X,-Y_new::]=1
     return res
