@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[186]:
 
 
 import numpy as np
@@ -33,11 +33,26 @@ def PIDController(
         e_y (:double:) current tracking error (automatically becomes prev_e_y at next iteration).
         e_int_y (:double:) current integral error (automatically becomes prev_int_y at next iteration).
     """
+    # controller coefficients
+    Kp = 0.4
+    Ki = 0.03
+    Kd = 3.2
+
+    # Tracking error
+    e_y = y_ref - y_hat
+
+    # integral of the error
+    e_int_y = prev_int_y + e_y*delta_t
+    e_int_y = max(min(e_int_y,2),-2) #anti-windup - preventing the integral error from growing too much
+
+    # derivative of the error
+    e_der_y = (e_y - prev_e_y)/delta_t
+
+    # PID controller
+    omega = Kp*e_y + Ki*e_int_y + Kd*e_der_y
     
-    # TODO: these are random values, you have to implement your own PID controller in here
-    omega = np.random.uniform(-8.0, 8.0)
-    e_y = np.random.random()
-    e_int_y = np.random.random()
+    #print(f"\n\nDelta time : {delta_t} \nE : {np.rad2deg(e)} \nE int : {e_int} \nPrev e : {prev_e} \nU : {u} \nTheta hat: {np.rad2deg(theta_hat)} \n")
+    
     
     return [v_0, omega], e_y, e_int_y
 
